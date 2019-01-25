@@ -56,7 +56,6 @@ public class PlayerInput : MonoBehaviour {
         // Detect if Y button was pressed this frame
         if (prevState.Buttons.Y == ButtonState.Released && state.Buttons.Y == ButtonState.Pressed)
         {
-            player.SwitchWeapon();
         }
     }
 
