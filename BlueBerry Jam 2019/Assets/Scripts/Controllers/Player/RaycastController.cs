@@ -2,11 +2,11 @@
 using System.Collections;
 
 [RequireComponent (typeof (BoxCollider2D))]
-public abstract class RaycastController : MonoBehaviour {
+public class RaycastController : MonoBehaviour {
 
 	public LayerMask collisionMask;
 	
-	public const float skinWidth = 0.01f;
+	public const float skinWidth = .015f;
 	const float dstBetweenRays = .25f;
 	[HideInInspector]
 	public int horizontalRayCount;
