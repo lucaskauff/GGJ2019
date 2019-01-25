@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -32,7 +33,7 @@ MonoBehaviour:
   - QTools.QHierarchy_Light_AdditionalInactiveColor
   - QTools.QHierarchy_Light_AdditionalSpecialColor
   settingStringValues:
-  - 995D5D5D
+  - C6000000
   - FF1B6DBB
   - 29666666
   - 08000000
@@ -128,4 +129,4 @@ MonoBehaviour:
   - QTools.QHierarchy_AdditionalShowHiddenQHierarchyObjectList
   - QTools.QHierarchy_AdditionalHideIconsIfNotFit
   - QTools.QHierarchy_AdditionalShowModifierWarning
-  settingBoolValues: 01010000010101010001010000000000000101010101010101010000000000010001000100010000010000010000010101000000010101
+  settingBoolValues: 01010000010101010001010000000000000101010101010101010000000001010101000100010000010000010000010101000000010101
