@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-
 
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour {
@@ -11,14 +9,9 @@ public class Player : MonoBehaviour {
 	public float timeToJumpApex = .4f;
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
-	public float moveSpeed = 6;
+	float moveSpeed = 6;
 
-    Vector2 position;
-    Vector2 prevPosition;
-    Vector2 weaponPosition;
-    Vector2 weaponPrevPosition;
-
-    public Vector2 wallJumpClimb;
+	public Vector2 wallJumpClimb;
 	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
 
@@ -26,7 +19,7 @@ public class Player : MonoBehaviour {
 	public float wallStickTime = .25f;
 	float timeToWallUnstick;
 
-	public float gravity;
+	float gravity;
 	float maxJumpVelocity;
 	float minJumpVelocity;
 	Vector3 velocity;
@@ -35,25 +28,24 @@ public class Player : MonoBehaviour {
 	Controller2D controller;
 
 	Vector2 directionalInput;
-    bool wallSliding;
+	bool wallSliding;
 	int wallDirX;
 
-
-    void Start() {
+	void Start() {
 		controller = GetComponent<Controller2D> ();
 
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);
-    }
+	}
 
 	void Update() {
-        CalculateVelocity();
-        HandleWallSliding ();
+		CalculateVelocity ();
+		HandleWallSliding ();
 
 		controller.Move (velocity * Time.deltaTime, directionalInput);
 
-        if (controller.collisions.above || controller.collisions.below) {
+		if (controller.collisions.above || controller.collisions.below) {
 			if (controller.collisions.slidingDownMaxSlope) {
 				velocity.y += controller.collisions.slopeNormal.y * -gravity * Time.deltaTime;
 			} else {
@@ -62,11 +54,11 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public void SetInputs (Vector2 inputLeftStick, Vector2 inputRightStick) {
-		directionalInput = inputLeftStick;
+	public void SetDirectionalInput (Vector2 input) {
+		directionalInput = input;
 	}
 
-    public void OnJumpInputDown() {
+	public void OnJumpInputDown() {
 		if (wallSliding) {
 			if (wallDirX == directionalInput.x) {
 				velocity.x = -wallDirX * wallJumpClimb.x;
