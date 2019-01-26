@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Controller2D : MonoBehaviour{
+public class Controller2D : RaycastController {
 
-	/*public float maxSlopeAngle = 80;
+	public float maxSlopeAngle = 80;
 
 	public CollisionInfo collisions;
 	[HideInInspector]
@@ -247,6 +247,6 @@ public class Controller2D : MonoBehaviour{
 			slopeAngleOld = slopeAngle;
 			slopeAngle = 0;
 		}
-	}*/
+	}
 
 }

@@ -60,6 +60,7 @@ public class Wire : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         wirePoints.Add(wireStart);
         lastPoint = wirePoints[0];
+        previousPoint = lastPoint;
     }
 
     private void Update()
