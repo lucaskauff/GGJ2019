@@ -11,6 +11,7 @@ public class MemoriesManager : MonoBehaviour
 
     public GameObject[] memories;
     public GameObject memoryText;
+    public GameObject playerMap;
 
     GameObject selectedMemory;
 
@@ -25,11 +26,11 @@ public class MemoriesManager : MonoBehaviour
         {
             if(item.GetComponent<MemoryTrigger>().memory.discovered)
             {
-                item.SetActive(true);
+                item.GetComponent<Image>().enabled = true;
             }
             else
             {
-                item.SetActive(false);
+                item.GetComponent<Image>().enabled = false;
             }
         }
     }

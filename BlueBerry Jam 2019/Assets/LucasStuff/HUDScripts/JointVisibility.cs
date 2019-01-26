@@ -8,21 +8,18 @@ public class JointVisibility : MonoBehaviour
     public GameObject startMemory;
     public GameObject endMemory;
     Image myImage;
-    bool isVisible;
 
     private void Start()
     {
         myImage = GetComponent<Image>();
-        myImage.enabled = !myImage.enabled;
-        isVisible = false;
+        myImage.enabled = false;
     }
 
     private void Update()
     {
-        if (startMemory.GetComponent<MemoryTrigger>().memory.discovered && endMemory.GetComponent<MemoryTrigger>().memory.discovered && !isVisible)
+        if (startMemory.GetComponent<MemoryTrigger>().memory.discovered && endMemory.GetComponent<MemoryTrigger>().memory.discovered)
         {
-            myImage.enabled = !myImage.enabled;
-            isVisible = true;
+            myImage.enabled = true;
         }
     }
 }
