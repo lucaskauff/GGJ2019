@@ -4,15 +4,45 @@ using UnityEngine;
 
 public class PlayerMapMov : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    float moveSpeed;
+
+    public bool hasToMove;
+    //public Transform previousPos;
+    public Transform whereToGo;
+
+    private void Start()
     {
-        
+        //previousPos = transform;
+        hasToMove = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (hasToMove)
+        {
+            //Debug.Log("Tipar");
+            transform.position = Vector2.MoveTowards(transform.position, whereToGo.position, moveSpeed * Time.deltaTime);
+        }
+
+        if (transform.position == whereToGo.position)
+        {
+            Debug.Log("Arrived");
+            //previousPos = whereToGo;
+            whereToGo = null;
+            hasToMove = false;
+        }
+        else if (whereToGo != null)
+        {
+            hasToMove = true;
+        }
     }
+
+    /*
+    public void Move(Transform target)
+    {
+        whereToGo = target;
+        transform.position = Vector2.MoveTowards(previousPos.position, target.position, moveSpeed * Time.deltaTime);
+    }
+    */
 }

@@ -11,26 +11,28 @@ public class MemoriesManager : MonoBehaviour
 
     public GameObject[] memories;
     public GameObject memoryText;
-    public GameObject playerMap;
+    public PlayerMapMov playerMapMov;
 
-    GameObject selectedMemory;
+    public GameObject selectedMemory;
 
     private void Start()
     {
         selectedMemory = memories[0];
+
+        foreach (GameObject item in memories)
+        {
+            item.GetComponent<Image>().enabled = false;
+        }
     }
 
     private void Update()
     {
         foreach (GameObject item in memories)
         {
-            if(item.GetComponent<MemoryTrigger>().memory.discovered)
+            if (item.GetComponent<MemoryTrigger>().memory.discovered  && !item.GetComponent<MemoryTrigger>().memory.yeppa)
             {
-                item.GetComponent<Image>().enabled = true;
-            }
-            else
-            {
-                item.GetComponent<Image>().enabled = false;
+                item.GetComponent<MemoryTrigger>().memory.yeppa = true;
+                NeuroneApparition(item);
             }
         }
     }
@@ -41,6 +43,17 @@ public class MemoriesManager : MonoBehaviour
 
         StopAllCoroutines();
         StartCoroutine(TypeMemory(selectedMemory.GetComponent<MemoryTrigger>().memory.sentence));
+    }
+
+    public void NeuroneApparition(GameObject neurone)
+    {
+        Debug.Log(neurone);
+
+        //ANIM APPARITION (OUPAS)
+        neurone.GetComponent<Image>().enabled = true;
+
+        //playerMapMov.SendMessage("Move", neurone.transform);
+        playerMapMov.GetComponent<PlayerMapMov>().whereToGo = neurone.transform;
     }
 
     IEnumerator TypeMemory (string sentence)

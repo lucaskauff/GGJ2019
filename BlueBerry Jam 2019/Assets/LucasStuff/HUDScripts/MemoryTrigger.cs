@@ -8,6 +8,7 @@ public class MemoryTrigger : MonoBehaviour
 
     public void TriggerMemory()
     {
+        FindObjectOfType<MemoriesManager>().selectedMemory = gameObject;
         FindObjectOfType<MemoriesManager>().DisplayMemory(memory);
     }
 }
