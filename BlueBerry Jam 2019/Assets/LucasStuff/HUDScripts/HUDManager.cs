@@ -5,10 +5,12 @@ using UnityEngine;
 public class HUDManager : MonoBehaviour
 {
     public GameObject hUD;
+    public Transform mindMap;
+    public Transform player;
 
     private void Start()
     {
-        //hUD.SetActive(false);
+        hUD.SetActive(false);
     }
 
     private void Update()
@@ -28,6 +30,8 @@ public class HUDManager : MonoBehaviour
 
     public void ShowHUD()
     {
+        //Center on player's position
+        mindMap.position = mindMap.position - player.position;
         hUD.SetActive(true);
     }
 

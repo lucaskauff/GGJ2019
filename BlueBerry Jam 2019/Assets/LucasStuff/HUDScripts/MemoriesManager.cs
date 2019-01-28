@@ -11,7 +11,7 @@ public class MemoriesManager : MonoBehaviour
 
     public GameObject[] memories;
     public GameObject memoryText;
-    public PlayerMapMov playerMapMov;
+    public PlayerMapMov player;
 
     public GameObject selectedMemory;
 
@@ -21,7 +21,10 @@ public class MemoriesManager : MonoBehaviour
 
         foreach (GameObject item in memories)
         {
-            item.GetComponent<Image>().enabled = false;
+            foreach (Image image in item.GetComponentsInChildren(typeof(Image)))
+            {
+                image.enabled = false;
+            }
         }
     }
 
@@ -50,10 +53,13 @@ public class MemoriesManager : MonoBehaviour
         Debug.Log(neurone);
 
         //ANIM APPARITION (OUPAS)
-        neurone.GetComponent<Image>().enabled = true;
+        foreach (Image image in neurone.GetComponentsInChildren(typeof(Image)))
+        {
+            image.enabled = true;
+        }
 
         //playerMapMov.SendMessage("Move", neurone.transform);
-        playerMapMov.GetComponent<PlayerMapMov>().whereToGo = neurone.transform;
+        player.GetComponent<PlayerMapMov>().whereToGo = neurone.transform;
     }
 
     IEnumerator TypeMemory (string sentence)
